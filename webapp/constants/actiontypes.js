@@ -1,0 +1,3 @@
+export const REQUEST_JSON = 'REQUEST_JSON';
+export const RECEIVE_JSON = 'RECEIVE_JSON';
+export const TBL_FORM_CHECK = 'TBL_FORM_CHECK';

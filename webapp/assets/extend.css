@@ -1,0 +1,43 @@
+.table-cont {
+
+    max-height: 700px;
+    overflow: auto;
+
+    margin: 20px 10px;
+}
+.table-cont table tbody td{
+	position: relative;
+}
+
+.table-cont .col-focus .col-input{
+	line-height: .5;
+	position: absolute;
+	left:0;
+	top:0.7em;
+}
+
+.table-cont table>tbody>tr:nth-child(odd) {
+    background: #fff;
+}
+
+.table-cont table>tbody>tr:nth-child(even) {
+    background: #f7f7f7;
+}
+.table-cont table>tbody>tr:hover {
+    background: #e3ecfc;
+}
+
+.table-cont .close-add{
+	font-size:2em;
+	color:#50ff00;
+	line-height: 1;
+}
+.table-cont .close-del{
+	font-size:3em;
+	color:#ae0000;
+	line-height: .4;
+}
+.table-cont .close:focus{
+    outline: 0;
+}
+

@@ -1,0 +1,13 @@
+{
+
+  "presets": [
+    ["es2015", {"modules": false}],
+    "react"
+  ],
+  "plugins": [
+    "react-hot-loader/babel",
+    "syntax-dynamic-import",
+    "transform-async-to-generator"
+  ]
+  
+}

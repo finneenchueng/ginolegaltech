@@ -1,0 +1,50 @@
+
+.route-left-enter {
+    position: absolute;
+    top: 0;
+    background: #fff;
+    z-index: 10000;
+    opacity: 1;
+    transform: translateX(100%);
+}
+
+.route-left-enter.route-left-enter-active {
+    opacity: 1;
+    transform: translateX(0);
+    transition: all 0.3s ease-out;
+}
+
+.route-left-leave {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.route-left-leave.route-left-leave-active {
+    opacity: 1;
+    transform: translateX(-100%);
+    transition: all 0.3s ease-out;
+}
+
+.route-right-enter {
+    transform: translateX(-100%);
+}
+
+.rroute-ight-enter.route-right-enter-active {
+    transform: translateX(0);
+    transition: all 0.3s ease-out;
+}
+
+.route-right-leave {
+    position: absolute;
+    top: 0;
+    background: #fff;
+    z-index: 10000;
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.route-right-leave.route-right-leave-active {
+    opacity: 1;
+    transform: translateX(100%);
+    transition: all 0.4s ease-out;
+}
