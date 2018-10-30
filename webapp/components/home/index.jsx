@@ -165,8 +165,8 @@ export default class Home extends React.Component {
               if(_min!=null){
                 _min=parseInt(_min);
                 if(_values < _min*10000){ 
-                    console.log(_values < _min*10000) 
-                    console.log(_values +'<'+ _min*10000)
+                    // console.log(_values < _min*10000) 
+                    // console.log(_values +'<'+ _min*10000)
                     flag=true;             
                      if(typeof msg.checkInputName ==='undefined'){
                         msg.checkInputName=_iteminput.name;
@@ -178,8 +178,8 @@ export default class Home extends React.Component {
               if(!flag){
                 if(_max!=null){
                   _max=parseInt(_max);
-                  console.log(_values > _max*10000) 
-                      console.log(_values +'>'+ _max*10000) 
+                  // console.log(_values > _max*10000) 
+                  //     console.log(_values +'>'+ _max*10000) 
                   if(_values > _max*10000){
                     if(typeof msg.checkInputName ==='undefined'){
                           msg.checkInputName=_iteminput.name;
