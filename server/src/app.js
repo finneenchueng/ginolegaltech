@@ -19,6 +19,7 @@ router.route('/templates')
         } else {
             res.json(randomVariables.getRandomTemplate());
         }
+        // res.status(500).send("Something spilled their beer in the server ! Try again !")
     });
 
 router.route('/answers')
@@ -30,39 +31,39 @@ router.route('/answers')
         }
     });
 
-router.route('/getlist')
-    .post(function(req,res) {
-        res.json({code:0,data:data})
-    });
-router.route('/delItem')
-    .post(function(req,res) {
-        var _id=req.body.id;
-        for(var i=0;i<=data.length;i++){
-            if(data[i].id==_id){
-                data.splice(i,1); 
-                break;
-            }
-        }
-        res.json({code:0});
+// router.route('/getlist')
+//     .post(function(req,res) {
+//         res.json({code:0,data:data})
+//     });
+// router.route('/delItem')
+//     .post(function(req,res) {
+//         var _id=req.body.id;
+//         for(var i=0;i<=data.length;i++){
+//             if(data[i].id==_id){
+//                 data.splice(i,1); 
+//                 break;
+//             }
+//         }
+//         res.json({code:0});
         
-    });
-router.route('/setItem')
-    .post(function(req,res) {
-        var params_data=req.body.json;
-        if(params_data.id){
-            for(var i=0;i<=data.length;i++){
-                if(data[i].id==params_data.id){
-                    data[i]=params_data;
-                    break;
-                }
-            }
-        }else{
-            params_data.id=Math.random();
-            data.push(params_data);
-        }
-        // console.log(params_data)
-        res.json({code:0,data:params_data});
-    });
+//     });
+// router.route('/setItem')
+//     .post(function(req,res) {
+//         var params_data=req.body.json;
+//         if(params_data.id){
+//             for(var i=0;i<=data.length;i++){
+//                 if(data[i].id==params_data.id){
+//                     data[i]=params_data;
+//                     break;
+//                 }
+//             }
+//         }else{
+//             params_data.id=Math.random();
+//             data.push(params_data);
+//         }
+//         // console.log(params_data)
+//         res.json({code:0,data:params_data});
+//     });
 app.use(router);
 
 app.get('/', function (req, res) {
@@ -73,6 +74,6 @@ app.get('/', function (req, res) {
 });
 
 app.use(express.static(path.resolve(__dirname, "../../build/dist")));
-app.listen(9000, function () {
-    console.log('Javascript tech lead test server listening on port 9000 !')
+app.listen(9001, function () {
+    console.log('Javascript tech lead test server listening on port 9001 !')
 });

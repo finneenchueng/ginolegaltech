@@ -56,6 +56,18 @@ function fetchJSON(opt){
 
 
 }
+// {
+// 			// console.log(response)
+// 			return response.json()
+// 				// try{
+// 				// 	JSON.parse(response);
+// 				// 	return response.json()
+// 				// }catch(e){
+// 				// 	return {
+// 				// 		msg:response
+// 				// 	}
+// 				// }
+// 			}
 export function fetchDoPost(_paramsopt,doneCall,errorCall){
 	var paramsArr=[];
 	var paramsString='';
@@ -75,13 +87,19 @@ export function fetchDoPost(_paramsopt,doneCall,errorCall){
 			'Content-Type':'application/json'
 		}
 	};
+	if(_paramsopt.formdata){
+		_opt.body=_paramsopt.formdata;
+		_opt.headers['Content-Type']='application/x-www-form-urlencoded';
+
+	}
+	// console.log(_opt)
 	if(paramsArr.length==0){
 		delete _opt.body;
 	}
 	fetch(_paramsopt.url,_opt)
 		.then(response => response.json())
 		.then(json => doneCall(json))
-		.catch((error) => errorCall(json));
+		.catch((error) => errorCall(error));
 		return {
 			type: null,
 			name:{}

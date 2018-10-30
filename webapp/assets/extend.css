@@ -1,3 +1,6 @@
+.content-box{
+	margin-top:4em;
+}
 .table-cont {
 
     max-height: 700px;
@@ -41,3 +44,17 @@
     outline: 0;
 }
 
+.lbl-pop{
+	position: relative;
+	display: block;
+}
+.lbl-pop .popover{
+	display: none;
+	top:0;
+	right:-3px;
+
+}
+.lbl-pop:hover .popover{
+	display: block;
+
+}

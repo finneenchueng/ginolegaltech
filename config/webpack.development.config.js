@@ -83,7 +83,7 @@ module.exports = {
     clientLogLevel: "none",
     port: 3001,
     proxy:{
-      '*':"http://localhost:9000/"
+      '*':"http://localhost:9001"
     }
   }
 }
