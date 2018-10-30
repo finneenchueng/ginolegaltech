@@ -165,8 +165,8 @@ export default class Home extends React.Component {
               if(_min!=null){
                 _min=parseInt(_min);
                 if(_values < _min*10000){ 
-                    // console.log(_values < _min*10000) 
-                    // console.log(_values +'<'+ _min*10000)
+                    console.log(_values < _min*10000) 
+                    console.log(_values +'<'+ _min*10000)
                     flag=true;             
                      if(typeof msg.checkInputName ==='undefined'){
                         msg.checkInputName=_iteminput.name;
@@ -177,9 +177,9 @@ export default class Home extends React.Component {
               }
               if(!flag){
                 if(_max!=null){
-                  // _max=parseInt(_max);
-                  // console.log(_values > _max*10000) 
-                  //     console.log(_values +'>'+ _max*10000) 
+                  _max=parseInt(_max);
+                  console.log(_values > _max*10000) 
+                      console.log(_values +'>'+ _max*10000) 
                   if(_values > _max*10000){
                     if(typeof msg.checkInputName ==='undefined'){
                           msg.checkInputName=_iteminput.name;
@@ -208,7 +208,7 @@ export default class Home extends React.Component {
       // }
       
     }
-    console.log('option values:',opt)
+    // console.log('option values:',opt)
     return {
         data:opt,
         msgopt:msg
@@ -300,7 +300,7 @@ export default class Home extends React.Component {
   doBack(e){
     var tmpOpt= this.getBasicOpt();
     if(tmpOpt.currentStep>tmpOpt.firstStep){
-      console.log(JSON.stringify(tmpOpt))
+      // console.log(JSON.stringify(tmpOpt))
       var flag=false;
       if(tmpOpt.records[tmpOpt.currentStep-2]==undefined){
         flag=true;
@@ -316,7 +316,7 @@ export default class Home extends React.Component {
       }else{
         tmpOpt.variables=tmpOpt.records[tmpOpt.currentStep-2];
         tmpOpt.currentStep--;
-        console.log(JSON.stringify(tmpOpt))
+        // console.log(JSON.stringify(tmpOpt))
         this.setTblFormStep(tmpOpt);
       }
       
