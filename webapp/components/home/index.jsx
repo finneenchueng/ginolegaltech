@@ -40,11 +40,21 @@ export default class Home extends React.Component {
     this.isExistNext = this.isExistNext.bind(this);
     this.doSend = this.doSend.bind(this);
     this.doStart = this.doStart.bind(this);
+    this.getDateByTimes = this.getDateByTimes.bind(this);
 
   }
 
 
-
+  getDateByTimes(timestamps){
+    var d = new Date(timestamps * 10000);    //根据时间戳生成的时间对象
+    var date = (d.getFullYear()) + "-" + 
+           (d.getMonth() + 1) + "-" +
+           (d.getDate()) + " " + 
+           (d.getHours()) + ":" + 
+           (d.getMinutes()) + ":" + 
+           (d.getSeconds());
+    return date
+  }
   getBasicOpt(){
     const {logicOpt} = this.props;
     var tmpOpt= logicOpt.tblFormOpt;
@@ -86,30 +96,35 @@ export default class Home extends React.Component {
             if(/^(\+|-)?\d+($|\.\d+$)/i.test(value)){
               var _min=_iteminput.getAttribute("data-min");
               var _max=_iteminput.getAttribute("data-max");
-              // value=parseInt(value);
-              // if(_min!=null){
-              //   _min=parseInt(_min);
-              //   if(value < _min){ 
-              //       console.log(value < _min) 
-              //       console.log(value +'<'+ _min)             
-              //        if(typeof msg.checkInputName ==='undefined'){
-              //           msg.checkInputName=_iteminput.name;
-              //           msg.errorDesc="should be equal or greater than " +_min;
-              //         }
+              value=parseInt(value);
+              var flag=false;
+              if(_min!=null){
+                _min=parseInt(_min);
+                if(value < _min){ 
+                  flag=true;
+                    // console.log(value < _min) 
+                    // console.log(value +'<'+ _min)             
+                     if(typeof msg.checkInputName ==='undefined'){
+                        msg.checkInputName=_iteminput.name;
+                        msg.errorDesc="should be equal or greater than " +_min;
+                      }
                   
-              //   }
-              // }
-              // if(_max!=null){
-              //   _max=parseInt(_max);
-              //   console.log(value > _max) 
-              //       console.log(value +'>'+ _max) 
-              //   if(value > _max){
-              //     if(typeof msg.checkInputName ==='undefined'){
-              //           msg.checkInputName=_iteminput.name;
-              //           msg.errorDesc="should be less than or equal to " +_max;
-              //       }
-              //   }
-              // }
+                }
+              }
+              if(!flag){
+                if(_max!=null){
+                  _max=parseInt(_max);
+                  // console.log(value > _max) 
+                  //     console.log(value +'>'+ _max) 
+                  if(value > _max){
+                    if(typeof msg.checkInputName ==='undefined'){
+                          msg.checkInputName=_iteminput.name;
+                          msg.errorDesc="should be less than or equal to " +_max;
+                      }
+                  }
+                }
+              }
+              
 
               // if(_min!=null && value < _min){ 
               //     console.log(value < _min) 
@@ -142,12 +157,44 @@ export default class Home extends React.Component {
 
           }else if(_iteminput.type=='date'){
             
-            if(!/^(\d{1,4})(-|\/)(\d{1,2})\2(\d{1,2})$/i.test(value)){
+            if(/^(\d{1,4})(-|\/)(\d{1,2})\2(\d{1,2})$/i.test(value)){
+              var _min=_iteminput.getAttribute("data-min");
+              var _max=_iteminput.getAttribute("data-max");
+              var _values=new Date(value).getTime();
+              var flag=false;
+              if(_min!=null){
+                _min=parseInt(_min);
+                if(_values < _min*10000){ 
+                    // console.log(_values < _min*10000) 
+                    // console.log(_values +'<'+ _min*10000)
+                    flag=true;             
+                     if(typeof msg.checkInputName ==='undefined'){
+                        msg.checkInputName=_iteminput.name;
+                        msg.errorDesc="should be later than" +this.getDateByTimes(_min);
+                      }
+                  
+                }
+              }
+              if(!flag){
+                if(_max!=null){
+                  // _max=parseInt(_max);
+                  // console.log(_values > _max*10000) 
+                  //     console.log(_values +'>'+ _max*10000) 
+                  if(_values > _max*10000){
+                    if(typeof msg.checkInputName ==='undefined'){
+                          msg.checkInputName=_iteminput.name;
+                          msg.errorDesc="should be earlier than" +this.getDateByTimes(_max);
+                      }
+                  }
+                }
+              }
+              
+              
+            }else{
               if(typeof msg.checkInputName ==='undefined'){
                 msg.checkInputName=_iteminput.name;
                 msg.errorDesc="must be date type !"
               }
-                
             }
           }
           opt[_iteminput.name]=value;
